@@ -24,6 +24,7 @@
   </view>
 </view>
 
+<!-- 状态栏 -->
 <view class="chess-board-status-bar">
       <view class="now-stone-bar">
             <view class="now-stone"

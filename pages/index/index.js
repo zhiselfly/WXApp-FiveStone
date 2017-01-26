@@ -10,6 +10,11 @@ import FiveStone from '../../FiveStone/FiveStone';
    */
   function handleTip(e) {
     const self = getCurrentPages()[0];
+
+    if (!self.fiveStone.canStep()) {
+      return;
+    }
+
     const stepTipPos = self.fiveStone.getStepPosition(e);
     self.loc = self.fiveStone.getStepLocation(e);
     //如果没有获取到下子的位置，隐藏掉下子提示

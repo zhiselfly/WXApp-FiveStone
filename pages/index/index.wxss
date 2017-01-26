@@ -40,7 +40,7 @@
 
 /** 棋盘的状态栏 */
 .chess-board-status-bar {
-  margin-top:10px;
+  margin-top:15px;
   margin-left:10px;
   margin-right:10px;
   height:90px;
