@@ -40,7 +40,8 @@
 <!-- 提示层和棋子 -->
 <view id="step-tip"
       class="step-tip"
-      style="width:{{fiveStone.cellSizePX}}px;height:{{fiveStone.cellSizePX}}px;display:{{showStepTip ? 'block':'none'}};left:{{stepTipPos.x}}px;top:{{stepTipPos.y}}px;"
+      style="width:{{fiveStone.cellSizePX}}px;height:{{fiveStone.cellSizePX}}px;left:{{stepTipPos.x}}px;top:{{stepTipPos.y}}px;"
+      hidden="{{!showStepTip}}"
 />
 <block wx:for="{{fiveStone.chessBoard}}" 
        wx:key="index"

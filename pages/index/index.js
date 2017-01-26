@@ -78,6 +78,7 @@ import FiveStone from '../../FiveStone/FiveStone';
       console.log('onLoad')
       //初始化棋盘
       this.fiveStone = new FiveStone(15, 0.9);
+      //这里不使用refreshFiveStone的原因是因为这里是初始化，区别出后面的刷新
       this.setData({
         'fiveStone':this.fiveStone
       });
