@@ -126,7 +126,7 @@ export default class FiveStone {
      * @return  返回true就是下子成功，否则为失败
      */
     step(x, y) {
-        if (this.canStep(x, y)) {
+        if (this.canStepAt(x, y)) {
             this.chessBoard[x][y].stoneType = this.nowStone();
             const nowStone = this.nowStone();
             this.stone = nowStone == Stone.black ? Stone.white:Stone.black;
@@ -159,12 +159,13 @@ export default class FiveStone {
         this.stone = lastStone.stoneType;
         this.history.splice(lastStoneIndex, 1);
         this.chessBoard[lastStone.x][lastStone.y].stoneType = Stone.none;
+        this.allowStep();
     }
 
     /**
      * 判断该棋子是否能够下
      */
-    canStep(x, y) {
+    canStepAt(x, y) {
         if (x < 0 || x >= this.chessBoardSize ||
             y < 0 || y >= this.chessBoardSize ||
             this.chessBoard[x][y].stoneType != Stone.none) {
@@ -225,6 +226,7 @@ export default class FiveStone {
         }
         //清空历史
         this.history = [];
+        this.allowStep();
     }
 
     /**
