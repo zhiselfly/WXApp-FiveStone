@@ -12,12 +12,14 @@ import FiveStone from '../../FiveStone/FiveStone';
     const self = getCurrentPages()[0];
     const stepTipPos = self.fiveStone.getStepPosition(e);
     self.loc = self.fiveStone.getStepLocation(e);
+    //如果没有获取到下子的位置，隐藏掉下子提示
     if (stepTipPos == null) {
       self.setData({
         showStepTip:false
       });
       return;
     }
+    //设置并显示下子提示的位置
     self.setData({
       'stepTipPos':stepTipPos,
       showStepTip:true
@@ -45,9 +47,7 @@ import FiveStone from '../../FiveStone/FiveStone';
       const loc = this.loc;
       if (loc != null) {
         this.fiveStone.step(loc.x, loc.y);
-        this.setData({
-          'fiveStone':this.fiveStone
-        });
+        this.refreshFiveStone();
       }
     },
     /**
