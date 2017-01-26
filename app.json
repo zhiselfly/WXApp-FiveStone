@@ -1,0 +1,12 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#6c6c6c",
+    "navigationBarTitleText": "传说中的五子棋",
+    "navigationBarTextStyle":"white"
+  }
+}

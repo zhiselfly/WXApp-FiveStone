@@ -1,0 +1,86 @@
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/** 棋盘 */
+.chess-board {
+  display:flex;
+  flex-direction: column;
+}
+/** 棋盘的每一行 */
+.chess-board .row {
+  display: flex;
+  flex-direction: row;
+  height:100%;
+}
+/** 棋盘的每一个格 */
+.chess-board .cell {
+  border-bottom:1px solid #000000;
+  border-right:1px solid #000000;
+  flex:1;
+}
+/** 每一行的第一个格子 */
+.chess-board .row .cell:first-child {
+  border-left: 1px solid #000000;
+}
+/** 第一行的每一个格子 */
+.chess-board .row:first-child .cell {
+  border-top:1px solid #000000;
+}
+
+/** 下子的提示区域 */
+.step-tip {
+  border:1px solid #ff0000;
+  position:absolute;
+}
+
+/** 棋盘的状态栏 */
+.chess-board-status-bar {
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+  height:90px;
+  border:1px dashed #000000;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+/** 当前下的棋子类型 */
+.now-stone-bar {
+  height:100%;
+  width:90px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/** 当前子的类型 */
+.now-stone {
+  width:50px;
+  height:50px;
+  border:1px solid #000000;
+  border-radius:25px;
+}
+/** 控制按钮栏 */
+.five-stone-control-bar {
+  flex:1;
+  height:100%;
+  border-left:1px dashed #000000;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.five-stone-control-bar button {
+  flex:1;
+  margin:0 5px 0 5px;
+}
+
+page {
+  background-color: gray;
+}

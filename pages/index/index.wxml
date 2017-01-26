@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 棋盘 -->
+  <view id="chess-board"
+        class="chess-board" 
+        ontouchstart="onChessBoardTouchStart"
+        ontouchmove="onChessBoardTouchMove"
+        ontouchend="onChessBoardTouchEnd"
+        style="width:{{fiveStone.chessboardSizePX}}px;height:{{fiveStone.chessboardSizePX}}px;"
+  >
+    <view id="row_{{rowIndex}}"
+          class="row" 
+          wx:for="{{fiveStone.chessBoardCell}}"
+          wx:key="*this"
+          wx:for-index="rowIndex"
+          wx:for-item="row">
+      <view id="cell_{{rowIndex}}_{{colIndex}}"
+            class="cell"
+            wx:for="{{row}}" 
+            wx:key="*this"
+            wx:for-index="colIndex"
+            wx:for-item="col"/>
+    </view>
+  </view>
+</view>
+
+<view class="chess-board-status-bar">
+      <view class="now-stone-bar">
+            <view class="now-stone"
+                  style="background-color:{{fiveStone.stone == 1 ? 'black':'white'}};"
+            />
+      </view>
+      <view class="five-stone-control-bar">
+            <button bindtap="restart">重来</button>
+            <button bindtap="undo">悔棋</button>
+      </view>
+</view>
+
+<!-- 提示层和棋子 -->
+<view id="step-tip"
+      class="step-tip"
+      style="width:{{fiveStone.cellSizePX}}px;height:{{fiveStone.cellSizePX}}px;display:{{showStepTip ? 'block':'none'}};left:{{stepTipPos.x}}px;top:{{stepTipPos.y}}px;"
+/>
+<block wx:for="{{fiveStone.chessBoard}}" 
+       wx:key="index"
+       wx:for-index="rowIndex"
+       wx:for-item="row"
+>
+      <block wx:for="{{row}}"
+             wx:key="colIndex"
+             wx:for-index="colIndex"
+             wx:for-item="stone"
+      >
+            <view wx:if="{{stone.stoneType > 0}}"
+                  style="width:{{fiveStone.cellSizePX}}px;height:{{fiveStone.cellSizePX}}px;background-color:{{stone.stoneType == 1 ? '#000000':'#ffffff'}};border:1px solid #000000;border-radius:{{fiveStone.halfCellSizePX}}px;position:absolute;top:{{stone.pos.y}}px;left:{{stone.pos.x}}px;transform:scale(0.85);"
+            />
+      </block>
+</block>
