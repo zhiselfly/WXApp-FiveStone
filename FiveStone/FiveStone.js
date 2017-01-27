@@ -95,14 +95,6 @@ export default class FiveStone {
             stepPos.y < 0 || stepPos.y >= this.chessBoardSize) {
                 return null;
             }
-        // stepPos.x = Math.max(
-        //     0,
-        //     Math.min(this.chessBoardSize - 1, stepPos.x)
-        // );
-        // stepPos.y = Math.max(
-        //     0,
-        //     Math.min(this.chessBoardSize - 1, stepPos.y)
-        // );
         return stepPos;
     }
 
