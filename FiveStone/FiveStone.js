@@ -1,5 +1,5 @@
-
 var Stone = require('Stone');
+var judger = require('FiveStoneJudger');
 
 /**
  * 五子棋的主控制类
@@ -68,6 +68,8 @@ export default class FiveStone {
         this._canStep = true;
         //历史
         this.history = [];
+        //设置裁判
+        this.setJudger(judger);
     }
 
     /**
@@ -141,7 +143,7 @@ export default class FiveStone {
                 'y':y,
                 'stoneType':nowStone
             });
-
+            this.judge(nowStone, x, y);
             return true;
         }
         return false;
@@ -182,7 +184,7 @@ export default class FiveStone {
             for (var i in this.onStepStoneCallbacks) {
                 const cb = this.onStepStoneCallbacks[i];
                 if (typeof(cb) === 'function') {
-                    cb(nowStone, x, y);
+                    cb.call(this, nowStone, x, y);
                 }
             }
         }
@@ -196,7 +198,7 @@ export default class FiveStone {
         if (!(this.onStepStoneCallbacks instanceof Array)) {
             this.onStepStoneCallbacks = [];
         }
-        if (typeof(func) == 'funciton') {
+        if (typeof(func) == 'function') {
             //push以后会返回数组的长度，所以减一之后就会是对应的索引
             return this.onStepStoneCallbacks.push(func) - 1;
         }
@@ -255,5 +257,35 @@ export default class FiveStone {
      */
     canStep() {
         return this._canStep;
+    }
+
+    /**
+     * 进行裁判(下子成功之后触发)
+     * @param stepStone 当前下子的类型
+     * @param x         下子基于棋盘的x坐标
+     * @param y         下子基于棋盘的y坐标
+     */
+    judge(stepStone, x, y) {
+        if (typeof(this._judger) == 'function') {
+            this._judger.call(this, stepStone, x, y, this._winCallback);
+        }
+    }
+
+    /**
+     * 设置裁判回调
+     */
+    setJudger(func) {
+        if (typeof(func) == 'function') {
+            this._judger = func;
+        }
+    }
+
+    /**
+     * 设置胜利之后的回调
+     */
+    setWinCallback(func) {
+        if (typeof(func) == 'function') {
+            this._winCallback = func;
+        }
     }
 }

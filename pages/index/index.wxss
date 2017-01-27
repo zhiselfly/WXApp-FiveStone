@@ -76,9 +76,16 @@
   justify-content: center;
   align-items: center;
 }
+/** 控制按钮 */
 .five-stone-control-bar button {
   flex:1;
   margin:0 5px 0 5px;
+}
+/** 胜利之后提示五连子的位置 */
+.win_tip {
+  background-color:#ff0000;
+  height:4px;
+  position:absolute;
 }
 
 page {
