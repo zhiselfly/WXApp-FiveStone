@@ -11,13 +11,13 @@
     <view id="row_{{rowIndex}}"
           class="row" 
           wx:for="{{fiveStone.chessBoardCell}}"
-          wx:key="*this"
+          wx:key="rowIndex"
           wx:for-index="rowIndex"
           wx:for-item="row">
       <view id="cell_{{rowIndex}}_{{colIndex}}"
             class="cell"
             wx:for="{{row}}" 
-            wx:key="*this"
+            wx:key="colIndex"
             wx:for-index="colIndex"
             wx:for-item="col"/>
     </view>

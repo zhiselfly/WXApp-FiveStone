@@ -39,7 +39,13 @@ Object.defineProperty(
     value: function () {
       var cloneSelf = {};
       for (var key in this) {
-        cloneSelf[key] = this[key];
+        const cloneCur = this[key];
+        if (cloneCur instanceof Array ||
+            typeof(cloneCur) == 'object') {
+          cloneSelf[key] = cloneCur.clone();
+        } else {
+          cloneSelf[key] = cloneCur;
+        }
       }
       return cloneSelf;
     },

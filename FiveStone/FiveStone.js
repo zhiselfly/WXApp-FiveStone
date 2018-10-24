@@ -176,7 +176,7 @@ export default class FiveStone {
             for (var i in this.onStepStoneCallbacks) {
                 const cb = this.onStepStoneCallbacks[i];
                 if (typeof(cb) === 'function') {
-                    cb.call(this, nowStone, x, y);
+                    cb(this, nowStone, x, y);
                 }
             }
         }
